@@ -73,7 +73,8 @@ $user = '' if $user eq '%';
 _die "'-q' and '-s' meaningless in pipe mode" if $q or $s;
 @ARGV = ();
 while (<>) {
-    my @in = split;
+    chomp;
+    my @in = split(/\t/);
     my $r  = $repo || shift @in;
     my $u  = $user || shift @in;
     $ret = access( $r, $u, $aa, $ref );
